@@ -4,12 +4,12 @@ TERMUX_PKG_LICENSE="MIT"
 TERMUX_PKG_LICENSE_FILE="docs/license.rst"
 TERMUX_PKG_MAINTAINER="@termux"
 TERMUX_PKG_VERSION="25.3.5"
-# TERMUX_PKG_SRCURL=https://archive.mesa3d.org/mesa-${TERMUX_PKG_VERSION}.tar.xz
-# TERMUX_PKG_SHA256=be472413475082df945e0f9be34f5af008baa03eb357e067ce5a611a2d44c44b
+TERMUX_PKG_SRCURL=https://archive.mesa3d.org/mesa-${TERMUX_PKG_VERSION}.tar.xz
+TERMUX_PKG_SHA256=be472413475082df945e0f9be34f5af008baa03eb357e067ce5a611a2d44c44b
 # TERMUX_PKG_SRCURL=git+https://gitlab.freedesktop.org/mesa/mesa
 # TERMUX_PKG_GIT_BRANCH=main
-TERMUX_PKG_SRCURL=git+https://github.com/john-peterson/mesa
-TERMUX_PKG_GIT_BRANCH=build/linux
+# TERMUX_PKG_SRCURL=git+https://github.com/john-peterson/mesa
+# TERMUX_PKG_GIT_BRANCH=build/linux
 TERMUX_PKG_DEPENDS="libandroid-shmem, libc++, libdrm, libllvm (<< $TERMUX_LLVM_NEXT_MAJOR_VERSION), libx11, libxext, libxfixes, libxshmfence, libxxf86vm, ncurses, vulkan-loader, zlib, zstd"
 TERMUX_PKG_SUGGESTS="mesa-dev"
 TERMUX_PKG_BUILD_DEPENDS="libclc, libxrandr, llvm, llvm-tools, mlir, spirv-tools, xorgproto"
@@ -23,16 +23,17 @@ TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
 -Dglvnd=disabled
 -Dshared-llvm=enabled
 -Dllvm=enabled
-
+-Dglx=disabled
 -Dgallium-drivers=softpipe,zink
 -D vulkan-drivers=virtio,swrast
 -Dgles2=enabled
 -Degl=enabled
--Dglx=dri
-
+-Dplatforms=
 -Degl-native-platform=surfaceless
--Dplatforms=x11,xcb,device,surfaceless
 "
+
+# -Dplatforms=x11
+# -Dglx=dri
 
 # -D drm-shim=enabled
 # -D vulkan-drivers=panfrost
